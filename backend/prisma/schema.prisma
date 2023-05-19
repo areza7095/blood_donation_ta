@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+model users {
+  id_user       Int            @id @db.Int()
+  full_name     String         @db.VarChar(100)
+  email         String         @db.VarChar(50) @unique
+  password       String         @db.VarChar(250)
+  call_number   String         @db.VarChar(14)
+  blood_type    String         @db.VarChar(3)
+  location      String         @db.VarChar(50)
+  image_profile String         @db.VarChar(200)
+  blood_donors  blood_donors[]
+  report        biologic_report?
+}
+
+model blood_donors {
+  id_blood    Int    @id @default(autoincrement())
+  id_user     Int    
+  city        String @db.VarChar(45)
+  hospital    String @db.VarChar(45)
+  blood_type  String @db.VarChar(3)
+  call_number String @db.VarChar(14)
+  notes       String @db.LongText
+  id_User     users  @relation(fields: [id_user], references: [id_user])
+}
+
+model biologic_report {
+  id_report   Int    @id @default(autoincrement())
+  id_user     Int    @unique
+  glucose     String @db.VarChar(10)
+  cholesterol String @db.VarChar(10)
+  bilirubin   String @db.VarChar(10)
+  rbc         String @db.VarChar(10)
+  mcv         String @db.VarChar(10)
+  platelets   String @db.VarChar(10)
+  id_User     users  @relation(fields: [id_user], references: [id_user])
+}
+
+
