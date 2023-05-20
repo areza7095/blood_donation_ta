@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -8,8 +8,30 @@ import {
   TextInput,
   ScrollView
 } from "react-native";
+import { getUserInfo } from "../../api/user_api";
 
-function FindDonors(navigation) {
+function FindDonors({ navigation }) {
+  const [userInfo, setUserInfo] = useState([]);
+
+  const Url = "http://192.168.10.82:8000"
+
+
+
+  const handleGetUserInfo = () => {
+    getUserInfo(
+
+    ).then(result => {
+      if (result.status == 200) {
+        return setUserInfo(result.data);
+      }
+    });
+  };
+
+  useEffect(() => {
+
+    handleGetUserInfo();
+
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.backBtn1Stack}>
@@ -51,206 +73,54 @@ function FindDonors(navigation) {
           horizontal={false}
           contentContainerStyle={styles.scrollArea_contentContainerStyle}
         >
-          <View style={styles.personDonors}>
-            <View style={styles.rect}>
-              <View style={styles.profileImageRow}>
-                <View style={styles.profileImage}>
-                  <Image
-                    source={require("../../assets/images/image_mfq7..png")}
-                    resizeMode="contain"
-                    style={styles.image4}
-                  ></Image>
-                </View>
-                <View style={styles.fullNameColumn}>
-                  <View style={styles.fullName}>
-                    <Text style={styles.ahmadRezaA}>Ahmad Reza A</Text>
-                  </View>
-                  <View style={styles.address}>
-                    <View style={styles.image5Row}>
-                      <Image
-                        source={require("../../assets/images/image_y95K..png")}
-                        resizeMode="contain"
-                        style={styles.image5}
-                      ></Image>
-                      <Text style={styles.klapanunggalBogor}>
-                        Klapanunggal, Bogor
-                      </Text>
+          {userInfo.map((data, index) => {
+            console.log(`${Url}${data.image_profile}`)
+            return (
+              <>
+                <View style={styles.personDonors}>
+                  <View style={styles.rect}>
+                    <View style={styles.profileImageRow}>
+                      <View style={styles.profileImage}>
+                        <Image
+                          source={{uri: `${Url}${data.image_profile}`}}
+                          resizeMode="contain"
+                          style={styles.image4}
+                        ></Image>
+                      </View>
+                      <View style={styles.fullNameColumn}>
+                        <View style={styles.fullName}>
+                          <Text style={styles.ahmadRezaA}>{data.full_name}</Text>
+                        </View>
+                        <View style={styles.address}>
+                          <View style={styles.image5Row}>
+                            <Image
+                              source={require("../../assets/images/image_y95K..png")}
+                              resizeMode="contain"
+                              style={styles.image5}
+                            ></Image>
+                            <Text style={styles.klapanunggalBogor}>
+                            {data.location}
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                      <View style={styles.bloodType}>
+                        <ImageBackground
+                          source={require("../../assets/images/image_cl5X..png")}
+                          resizeMode="contain"
+                          style={styles.image6}
+                          imageStyle={styles.image6_imageStyle}
+                        >
+                          <Text style={styles.b2}>{data.blood_type}</Text>
+                        </ImageBackground>
+                      </View>
                     </View>
                   </View>
                 </View>
-                <View style={styles.bloodType}>
-                  <ImageBackground
-                    source={require("../../assets/images/image_cl5X..png")}
-                    resizeMode="contain"
-                    style={styles.image6}
-                    imageStyle={styles.image6_imageStyle}
-                  >
-                    <Text style={styles.b2}>B+</Text>
-                  </ImageBackground>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View style={styles.personDonors1}>
-            <View style={styles.rect1}>
-              <View style={styles.profileImage1Row}>
-                <View style={styles.profileImage1}>
-                  <Image
-                    source={require("../../assets/images/image_mfq7..png")}
-                    resizeMode="contain"
-                    style={styles.image7}
-                  ></Image>
-                </View>
-                <View style={styles.fullName1Column}>
-                  <View style={styles.fullName1}>
-                    <Text style={styles.ahmadRezaA1}>Ahmad Reza A</Text>
-                  </View>
-                  <View style={styles.address1}>
-                    <View style={styles.image8Row}>
-                      <Image
-                        source={require("../../assets/images/image_y95K..png")}
-                        resizeMode="contain"
-                        style={styles.image8}
-                      ></Image>
-                      <Text style={styles.klapanunggalBogor1}>
-                        Klapanunggal, Bogor
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View style={styles.bloodType1}>
-                  <ImageBackground
-                    source={require("../../assets/images/image_cl5X..png")}
-                    resizeMode="contain"
-                    style={styles.image9}
-                    imageStyle={styles.image9_imageStyle}
-                  >
-                    <Text style={styles.b3}>B+</Text>
-                  </ImageBackground>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View style={styles.personDonors2}>
-            <View style={styles.rect2}>
-              <View style={styles.profileImage2Row}>
-                <View style={styles.profileImage2}>
-                  <Image
-                    source={require("../../assets/images/image_mfq7..png")}
-                    resizeMode="contain"
-                    style={styles.image10}
-                  ></Image>
-                </View>
-                <View style={styles.fullName2Column}>
-                  <View style={styles.fullName2}>
-                    <Text style={styles.ahmadRezaA2}>Ahmad Reza A</Text>
-                  </View>
-                  <View style={styles.address2}>
-                    <View style={styles.image11Row}>
-                      <Image
-                        source={require("../../assets/images/image_y95K..png")}
-                        resizeMode="contain"
-                        style={styles.image11}
-                      ></Image>
-                      <Text style={styles.klapanunggalBogor2}>
-                        Klapanunggal, Bogor
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View style={styles.bloodType2}>
-                  <ImageBackground
-                    source={require("../../assets/images/image_cl5X..png")}
-                    resizeMode="contain"
-                    style={styles.image12}
-                    imageStyle={styles.image12_imageStyle}
-                  >
-                    <Text style={styles.b4}>B+</Text>
-                  </ImageBackground>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View style={styles.personDonors3}>
-            <View style={styles.rect3}>
-              <View style={styles.profileImage3Row}>
-                <View style={styles.profileImage3}>
-                  <Image
-                    source={require("../../assets/images/image_mfq7..png")}
-                    resizeMode="contain"
-                    style={styles.image13}
-                  ></Image>
-                </View>
-                <View style={styles.fullName3Column}>
-                  <View style={styles.fullName3}>
-                    <Text style={styles.ahmadRezaA3}>Ahmad Reza A</Text>
-                  </View>
-                  <View style={styles.address3}>
-                    <View style={styles.image14Row}>
-                      <Image
-                        source={require("../../assets/images/image_y95K..png")}
-                        resizeMode="contain"
-                        style={styles.image14}
-                      ></Image>
-                      <Text style={styles.klapanunggalBogor3}>
-                        Klapanunggal, Bogor
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View style={styles.bloodType3}>
-                  <ImageBackground
-                    source={require("../../assets/images/image_cl5X..png")}
-                    resizeMode="contain"
-                    style={styles.image15}
-                    imageStyle={styles.image15_imageStyle}
-                  >
-                    <Text style={styles.b5}>B+</Text>
-                  </ImageBackground>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View style={styles.personDonors4}>
-            <View style={styles.rect4}>
-              <View style={styles.profileImage4Row}>
-                <View style={styles.profileImage4}>
-                  <Image
-                    source={require("../../assets/images/image_mfq7..png")}
-                    resizeMode="contain"
-                    style={styles.image16}
-                  ></Image>
-                </View>
-                <View style={styles.fullName4Column}>
-                  <View style={styles.fullName4}>
-                    <Text style={styles.ahmadRezaA4}>Ahmad Reza A</Text>
-                  </View>
-                  <View style={styles.address4}>
-                    <View style={styles.image17Row}>
-                      <Image
-                        source={require("../../assets/images/image_y95K..png")}
-                        resizeMode="contain"
-                        style={styles.image17}
-                      ></Image>
-                      <Text style={styles.klapanunggalBogor4}>
-                        Klapanunggal, Bogor
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View style={styles.bloodType4}>
-                  <ImageBackground
-                    source={require("../../assets/images/image_cl5X..png")}
-                    resizeMode="contain"
-                    style={styles.image18}
-                    imageStyle={styles.image18_imageStyle}
-                  >
-                    <Text style={styles.b6}>B+</Text>
-                  </ImageBackground>
-                </View>
-              </View>
-            </View>
-          </View>
+              </>
+            )
+          })}
+
         </ScrollView>
       </View>
     </View>
@@ -319,7 +189,7 @@ const styles = StyleSheet.create({
   placeholder: {
     fontFamily: "poppins-500",
     color: "rgba(205,205,205,1)",
-    height: 28,
+    height: 38,
     width: 185,
     marginTop: 202,
     marginLeft: 101
@@ -331,7 +201,7 @@ const styles = StyleSheet.create({
   backBtn1Stack: {
     width: 365,
     height: 237,
-    marginTop: -80,
+    marginTop: -100,
     marginLeft: 1
   },
   scrollArea: {

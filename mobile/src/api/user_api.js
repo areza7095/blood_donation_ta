@@ -45,4 +45,32 @@ export const newBloodReq = async data => {
   }
 };
 
+export const getBloodReq = async data => {
+  try {
+    const result = await ApiManager('/GetBloodRequest', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+      }
+    });
+    return result;
+  } catch (error) {
+    return JSON.parse(error.request._response);
+  }
+};
+
+export const getUserInfo = async data => {
+  try {
+    const result = await ApiManager('/GetUserInfo', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+      }
+    });
+    return result;
+  } catch (error) {
+    return JSON.parse(error.request._response);
+  }
+};
+
 

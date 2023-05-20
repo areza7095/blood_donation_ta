@@ -11,6 +11,7 @@ dotenv.config();
 //import Router
 import AuthRoute from "./routes/AuthRoute.js";
 import BloodRoute from "./routes/BloodRoute.js";
+import UserInfoRoute from "./routes/UserInfoRoute.js";
 
 
 //Init Express
@@ -52,6 +53,7 @@ app.use(multer({storage: fileStorage, fileFilter: fileFilter}).single('image_pro
 app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use(AuthRoute);
 app.use(BloodRoute);
+app.use(UserInfoRoute);
 
 
 // listen

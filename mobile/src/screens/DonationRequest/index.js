@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -7,8 +7,29 @@ import {
   ScrollView,
   ImageBackground
 } from "react-native";
+import { getBloodReq } from "../../api/user_api";
 
-function DonationRequest(navigation) {
+function DonationRequest({ navigation }) {
+  const [donationReq, setDonationReq] = useState([]);
+
+
+
+  const handleGetDonationReq = () => {
+    getBloodReq(
+
+    ).then(result => {
+      if (result.status == 200) {
+        return setDonationReq(result.data);
+      }
+    });
+  };
+
+  useEffect(() => {
+
+    handleGetDonationReq();
+
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.backBtn}>
@@ -27,134 +48,47 @@ function DonationRequest(navigation) {
             horizontal={false}
             contentContainerStyle={styles.scrollArea_contentContainerStyle}
           >
-            <View style={styles.donationReqCard1}>
-              <View style={styles.donationRegRec1}>
-                <View style={styles.nameBlood1ColumnRow}>
-                  <View style={styles.nameBlood1Column}>
-                    <View style={styles.nameBlood1}>
-                      <Text style={styles.name2}>Name</Text>
-                      <Text style={styles.ahmadRezaA1}>Ahmad Reza A</Text>
-                    </View>
-                    <View style={styles.locationBlood1}>
-                      <Text style={styles.location2}>Location</Text>
-                      <Text style={styles.rsudLa1}>RSUD LA</Text>
-                    </View>
-                  </View>
-                  <View style={styles.bloodType1}>
-                    <ImageBackground
-                      source={require("../../assets/images/image_wK7p.png")}
-                      resizeMode="contain"
-                      style={styles.image1}
-                      imageStyle={styles.image1_imageStyle}
-                    >
-                      <Text style={styles.b2}>B+</Text>
-                    </ImageBackground>
-                  </View>
-                </View>
-                <View style={styles.donateBtn1}>
-                  <View style={styles.loremIpsum1Row}>
-                    <Text style={styles.loremIpsum1}>5 Min Ago</Text>
-                    <Text style={styles.donate2}>Donate</Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View style={styles.donationReqCard2}>
-              <View style={styles.donationRegRec2}>
-                <View style={styles.nameBlood2ColumnRow}>
-                  <View style={styles.nameBlood2Column}>
-                    <View style={styles.nameBlood2}>
-                      <Text style={styles.name3}>Name</Text>
-                      <Text style={styles.ahmadRezaA2}>Ahmad Reza A</Text>
-                    </View>
-                    <View style={styles.locationBlood2}>
-                      <Text style={styles.location3}>Location</Text>
-                      <Text style={styles.rsudLa2}>RSUD LA</Text>
+            {donationReq.map((data, index) => {
+              return (
+                <>
+                  <View style={styles.donationReqCard1}>
+                    <View style={styles.donationRegRec1}>
+                      <View style={styles.nameBlood1ColumnRow}>
+                        <View style={styles.nameBlood1Column}>
+                          <View style={styles.nameBlood1}>
+                            <Text style={styles.name2}>Name</Text>
+                            <Text style={styles.ahmadRezaA1}>{data.id_User.full_name}</Text>
+                          </View>
+                          <View style={styles.locationBlood1}>
+                            <Text style={styles.location2}>Location</Text>
+                            <Text style={styles.rsudLa1}>{data.hospital}</Text>
+                          </View>
+                        </View>
+                        <View style={styles.bloodType1}>
+                          <ImageBackground
+                            source={require("../../assets/images/image_wK7p.png")}
+                            resizeMode="contain"
+                            style={styles.image1}
+                            imageStyle={styles.image1_imageStyle}
+                          >
+                            <Text style={styles.b2}>{data.blood_type}</Text>
+                          </ImageBackground>
+                        </View>
+                      </View>
+                      <View style={styles.donateBtn1}>
+                        <View style={styles.loremIpsum1Row}>
+                          <Text style={styles.loremIpsum1}>5 Min Ago</Text>
+                          <Text style={styles.donate2}>Donate</Text>
+                        </View>
+                      </View>
                     </View>
                   </View>
-                  <View style={styles.bloodType2}>
-                    <ImageBackground
-                      source={require("../../assets/images/image_wK7p.png")}
-                      resizeMode="contain"
-                      style={styles.image2}
-                      imageStyle={styles.image2_imageStyle}
-                    >
-                      <Text style={styles.b3}>B+</Text>
-                    </ImageBackground>
-                  </View>
-                </View>
-                <View style={styles.donateBtn2}>
-                  <View style={styles.loremIpsum2Row}>
-                    <Text style={styles.loremIpsum2}>5 Min Ago</Text>
-                    <Text style={styles.donate3}>Donate</Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View style={styles.donationReqCard3}>
-              <View style={styles.donationRegRec3}>
-                <View style={styles.nameBlood3ColumnRow}>
-                  <View style={styles.nameBlood3Column}>
-                    <View style={styles.nameBlood3}>
-                      <Text style={styles.name4}>Name</Text>
-                      <Text style={styles.ahmadRezaA3}>Ahmad Reza A</Text>
-                    </View>
-                    <View style={styles.locationBlood3}>
-                      <Text style={styles.location4}>Location</Text>
-                      <Text style={styles.rsudLa3}>RSUD LA</Text>
-                    </View>
-                  </View>
-                  <View style={styles.bloodType3}>
-                    <ImageBackground
-                      source={require("../../assets/images/image_wK7p.png")}
-                      resizeMode="contain"
-                      style={styles.image3}
-                      imageStyle={styles.image3_imageStyle}
-                    >
-                      <Text style={styles.b4}>B+</Text>
-                    </ImageBackground>
-                  </View>
-                </View>
-                <View style={styles.donateBtn3}>
-                  <View style={styles.loremIpsum3Row}>
-                    <Text style={styles.loremIpsum3}>5 Min Ago</Text>
-                    <Text style={styles.donate4}>Donate</Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View style={styles.donationReqCard4}>
-              <View style={styles.donationRegRec4}>
-                <View style={styles.nameBlood4ColumnRow}>
-                  <View style={styles.nameBlood4Column}>
-                    <View style={styles.nameBlood4}>
-                      <Text style={styles.name5}>Name</Text>
-                      <Text style={styles.ahmadRezaA4}>Ahmad Reza A</Text>
-                    </View>
-                    <View style={styles.locationBlood4}>
-                      <Text style={styles.location5}>Location</Text>
-                      <Text style={styles.rsudLa4}>RSUD LA</Text>
-                    </View>
-                  </View>
-                  <View style={styles.bloodType4}>
-                    <ImageBackground
-                      source={require("../../assets/images/image_wK7p.png")}
-                      resizeMode="contain"
-                      style={styles.image4}
-                      imageStyle={styles.image4_imageStyle}
-                    >
-                      <Text style={styles.b5}>B+</Text>
-                    </ImageBackground>
-                  </View>
-                </View>
-                <View style={styles.donateBtn4}>
-                  <View style={styles.loremIpsum4Row}>
-                    <Text style={styles.loremIpsum4}>5 Min Ago</Text>
-                    <Text style={styles.donate5}>Donate</Text>
-                  </View>
-                </View>
-              </View>
-            </View>
+                </>
+              )
+            })}
+
+
+
           </ScrollView>
         </View>
         <View style={styles.navBarDonationReq}>
@@ -227,7 +161,7 @@ const styles = StyleSheet.create({
     width: 310,
     height: 44,
     flexDirection: "row",
-    marginTop: 41,
+    marginTop: 18,
     marginLeft: 33
   },
   image: {
@@ -262,7 +196,8 @@ const styles = StyleSheet.create({
   },
   donationReqCard1: {
     width: 332,
-    height: 139
+    height: 139,
+    marginBottom: 10
   },
   donationRegRec1: {
     width: 332,

@@ -27,3 +27,18 @@ export const NewBloodRequest = async (req, res) => {
   }
 };
 
+//Get Blood Req
+export const GetBloodRequest = async (req, res) => {
+
+  try {
+    const response = await prisma.blood_donors.findMany({
+      include:{
+        id_User: true
+      }
+    });
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+
+};
