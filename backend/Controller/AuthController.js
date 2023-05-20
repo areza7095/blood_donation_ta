@@ -48,7 +48,7 @@ export const Register = async (req, res) => {
         call_number: call_number,
         blood_type: blood_type,
         location: location,
-        image_profile: "http://192.168.1.101:8000/images/profileMain.jpg"
+        image_profile: "/images/profileMain.jpg"
       },
     });
     res.json(SaveUser);
@@ -97,6 +97,7 @@ export const Login = async (req, res) => {
       email: email,
     },
     select: {
+      id_user: true,
       full_name: true,
       email: true,
       call_number: true,

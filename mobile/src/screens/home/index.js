@@ -54,11 +54,11 @@ export default function Home({navigation}) {
             style={styles.image3}
             imageStyle={styles.image3_imageStyle}
           >
-            <Image
+            {/* <Image
               source={require("../../assets/images/image_WChR..png")}
               resizeMode="contain"
               style={styles.image4}
-            ></Image>
+            ></Image> */}
           </ImageBackground>
         </View>
         <View style={styles.categories}>
@@ -93,34 +93,6 @@ export default function Home({navigation}) {
                 style={styles.image7}
               ></Image>
             </TouchableOpacity>
-          </View>
-          <View style={styles.assistantStackRow}>
-            <View style={styles.assistantStack}>
-              <View style={styles.assistant}>
-                <Image
-                  source={require("../../assets/images/image_uz6Q..png")}
-                  resizeMode="contain"
-                  style={styles.image8}
-                ></Image>
-              </View>
-              <TouchableOpacity
-                onPress={() => navigation.navigate("Report")}
-                style={styles.button9}
-              >
-                <Image
-                  source={require("../../assets/images/image_EJrY..png")}
-                  resizeMode="contain"
-                  style={styles.image9}
-                ></Image>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.campaign}>
-              <Image
-                source={require("../../assets/images/image_WNOf..png")}
-                resizeMode="contain"
-                style={styles.image10}
-              ></Image>
-            </View>
           </View>
         </View>
       </View>
@@ -320,7 +292,7 @@ const styles = StyleSheet.create({
     marginLeft: 158
   },
   categories: {
-    top: 262,
+    top: 300,
     left: 23,
     width: 333,
     height: 223,
@@ -404,7 +376,6 @@ const styles = StyleSheet.create({
     height: 26,
     width: 158,
     fontSize: 15,
-    marginTop: 10,
     marginLeft: 30
   },
   scrollArea: {

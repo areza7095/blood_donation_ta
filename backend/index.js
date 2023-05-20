@@ -10,6 +10,7 @@ dotenv.config();
 
 //import Router
 import AuthRoute from "./routes/AuthRoute.js";
+import BloodRoute from "./routes/BloodRoute.js";
 
 
 //Init Express
@@ -50,6 +51,7 @@ app.use(cors({
 app.use(multer({storage: fileStorage, fileFilter: fileFilter}).single('image_profile'));
 app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use(AuthRoute);
+app.use(BloodRoute);
 
 
 // listen

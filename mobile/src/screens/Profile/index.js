@@ -15,6 +15,8 @@ function Profile({navigation}) {
   const [bloodType, setBloodType] = useState('');
   const [location, setLocation] = useState('');
   const [imageProfile, setImageProfile] = useState('');
+
+  const Url = "http://192.168.10.82:8000"  
   
 
   useEffect(() => {
@@ -46,7 +48,7 @@ function Profile({navigation}) {
       setBloodType(blood_type)
       setLocation(location)
       setImageProfile(image_profile)
-      console.log(imageProfile)
+      // console.log(Url+imageProfile)
     }
   };
 
@@ -70,7 +72,7 @@ function Profile({navigation}) {
           style={styles.image2}
           imageStyle={styles.image2_imageStyle}>
           <Image
-            source={{uri: `${imageProfile}`}} 
+            source={{uri: `${Url}${imageProfile}`}} 
             resizeMode="contain"
             style={styles.image3}></Image>
         </ImageBackground>

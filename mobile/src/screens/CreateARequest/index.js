@@ -1,14 +1,72 @@
-import React, { Component } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { Component, useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
   Image,
   Text,
   ImageBackground,
-  TextInput
+  TextInput,
+  TouchableOpacity
 } from "react-native";
+import { newBloodReq } from "../../api/user_api";
 
-function CreateARequest(navigation) {
+function CreateARequest({navigation}) {
+  // personal info
+  const [idUser, setIdUser] = useState('');
+  const [dataToken, setDataToken] = useState('');
+
+
+  const [city, setCity] = useState('');
+  const [hospital, setHospital] = useState('');
+  const [bloodType, setBloodType] = useState('');
+  const [callNumber, setCallNumber] = useState('');
+  const [note, setNote] = useState('');
+  useEffect(() => {
+
+    handlePersonalInfo();
+
+  });
+
+  const handlePersonalInfo = async () => {
+    const dataToken = await AsyncStorage.getItem('accessToken');
+    if (dataToken == null) {
+      navigation.replace('Onboarding1');
+      console.log(dataToken);
+    } else {
+      const id_user = await AsyncStorage.getItem('id_user');
+      setIdUser(id_user)
+      setDataToken(dataToken)
+    }
+  };
+
+  
+ 
+
+  const handleSendReq = () => {
+    newBloodReq({
+      id_user: parseInt(idUser),
+      city: city,
+      hospital: hospital,
+      blood_type: bloodType,
+      call_number: callNumber,
+      notes: note,
+    })
+      .then(result => {
+        console.log('result:', result);
+        if (result.status == 200) {
+          alert(
+            'Penambahan request darah berhasil dikirim',
+          );
+          navigation.replace('Home');
+        } else {
+          alert(result.message);
+        }
+      })
+    
+  }
+
+
   return (
     <View style={styles.container}>
       <View style={styles.back}>
@@ -32,6 +90,8 @@ function CreateARequest(navigation) {
             <TextInput
               placeholder="City"
               style={styles.placeholder}
+              value={city}
+              onChangeText={text => setCity(text)}
             ></TextInput>
           </ImageBackground>
         </View>
@@ -45,6 +105,8 @@ function CreateARequest(navigation) {
             <TextInput
               placeholder="Hospital"
               style={styles.placeholder1}
+              value={hospital}
+              onChangeText={text => setHospital(text)}
             ></TextInput>
           </ImageBackground>
         </View>
@@ -58,9 +120,12 @@ function CreateARequest(navigation) {
             <TextInput
               placeholder="Blood Type"
               style={styles.placeholder2}
+              value={bloodType}
+              onChangeText={text => setBloodType(text)}
             ></TextInput>
           </ImageBackground>
         </View>
+
         <View style={styles.mobile}>
           <ImageBackground
             source={require("../../assets/images/image_hfIF..png")}
@@ -71,9 +136,12 @@ function CreateARequest(navigation) {
             <TextInput
               placeholder="Mobile"
               style={styles.placeholder4}
+              value={callNumber}
+              onChangeText={text => setCallNumber(text)}
             ></TextInput>
           </ImageBackground>
         </View>
+
         <View style={styles.note}>
           <ImageBackground
             source={require("../../assets/images/image_gRi0..png")}
@@ -84,16 +152,20 @@ function CreateARequest(navigation) {
             <TextInput
               placeholder="Add a Note"
               style={styles.placeholder3}
+              value={note}
+              onChangeText={text => setNote(text)}
             ></TextInput>
           </ImageBackground>
         </View>
-        <View style={styles.reqBtn}>
-          <Image
-            source={require("../../assets/images/image_bofV..png")}
-            resizeMode="contain"
-            style={styles.image6}
-          ></Image>
-        </View>
+        <TouchableOpacity onPress={() => handleSendReq()}>
+          <View style={styles.reqBtn}>
+            <Image
+              source={require("../../assets/images/image_bofV..png")}
+              resizeMode="contain"
+              style={styles.image6}
+            ></Image>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -144,7 +216,7 @@ const styles = StyleSheet.create({
   placeholder: {
     fontFamily: "poppins-500",
     color: "rgba(124,124,124,1)",
-    height: 38,
+    height: 44,
     width: 256,
     fontSize: 18,
     marginTop: 93,
@@ -165,7 +237,7 @@ const styles = StyleSheet.create({
   placeholder1: {
     fontFamily: "poppins-500",
     color: "rgba(124,124,124,1)",
-    height: 38,
+    height: 44,
     width: 256,
     fontSize: 18,
     marginTop: 93,
@@ -186,7 +258,7 @@ const styles = StyleSheet.create({
   placeholder2: {
     fontFamily: "poppins-500",
     color: "rgba(124,124,124,1)",
-    height: 38,
+    height: 44,
     width: 256,
     fontSize: 18,
     marginTop: 93,
@@ -194,7 +266,7 @@ const styles = StyleSheet.create({
   },
   mobile: {
     top: 223,
-    left: 9,
+    left: 2,
     width: 374,
     height: 223,
     position: "absolute"
@@ -207,7 +279,7 @@ const styles = StyleSheet.create({
   placeholder4: {
     fontFamily: "poppins-500",
     color: "rgba(124,124,124,1)",
-    height: 38,
+    height: 44,
     width: 256,
     fontSize: 18,
     marginTop: 93,
@@ -228,7 +300,7 @@ const styles = StyleSheet.create({
   placeholder3: {
     fontFamily: "poppins-500",
     color: "rgba(124,124,124,1)",
-    height: 38,
+    height: 40,
     width: 256,
     fontSize: 18,
     marginTop: 74,

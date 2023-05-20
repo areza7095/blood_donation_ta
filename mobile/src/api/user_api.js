@@ -30,4 +30,19 @@ export const register = async data => {
   }
 };
 
+export const newBloodReq = async data => {
+  try {
+    const result = await ApiManager('/NewBloodRequest', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      data: data,
+    });
+    return result;
+  } catch (error) {
+    return JSON.parse(error.request._response);
+  }
+};
+
 

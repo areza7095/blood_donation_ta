@@ -59,13 +59,17 @@ export default function Login({navigation}) {
       .then(result => {
         if (result.status == 200) {
           const accessToken = result.data.accessToken;
+          const id_user = result.data.personal_information.id_user;
           const full_name = result.data.personal_information.full_name;
           const call_number = result.data.personal_information.call_number;
           const blood_type = result.data.personal_information.blood_type;
           const location = result.data.personal_information.location;
           const image_profile = result.data.personal_information.image_profile;
 
+          const id_userToString = id_user.toString()
+
           AsyncStorage.setItem('accessToken', accessToken);
+          AsyncStorage.setItem('id_user', id_userToString);
           AsyncStorage.setItem('full_name', full_name);
           AsyncStorage.setItem('call_number', call_number);
           AsyncStorage.setItem('blood_type', blood_type);

@@ -11,6 +11,7 @@ export default function Splash({navigation}) {
 
   const handleGetToken = async () => {
     const dataToken = await AsyncStorage.getItem('accessToken');
+    const id_user = await AsyncStorage.getItem('id_user');
     if (dataToken == null) {
       navigation.replace('Onboarding1');
       console.log(dataToken);
@@ -23,6 +24,7 @@ export default function Splash({navigation}) {
       const image_profile = await AsyncStorage.getItem('image_profile');
       navigation.replace('Home');
       console.log(dataToken);
+      console.log(id_user);
     }
   };
 
