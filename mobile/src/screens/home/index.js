@@ -40,11 +40,11 @@ export default function Home({navigation}) {
               resizeMode="contain"
               style={styles.image2}
             ></Image>
-            <Image
+            {/* <Image
               source={require("../../assets/images/image_ZSAO..png")}
               resizeMode="contain"
               style={styles.image}
-            ></Image>
+            ></Image> */}
           </View>
         </View>
         <View style={styles.group2}>
