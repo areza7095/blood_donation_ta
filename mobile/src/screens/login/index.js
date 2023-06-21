@@ -16,6 +16,11 @@ export default function Login({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleLogin = () => {
+    AsyncStorage.clear();
+    navigation.navigate('Home');
+  };
+
   const checkPasswordValidity = value => {
     const isNonWhiteSpace = /^\S*$/;
     if (!isNonWhiteSpace.test(value)) {
@@ -51,40 +56,40 @@ export default function Login({navigation}) {
     return null;
   };
 
-  const handleLogin = () => {
-    login({
-      email: email.toLocaleLowerCase(),
-      password: password,
-    })
-      .then(result => {
-        if (result.status == 200) {
-          const accessToken = result.data.accessToken;
-          const id_user = result.data.personal_information.id_user;
-          const full_name = result.data.personal_information.full_name;
-          const call_number = result.data.personal_information.call_number;
-          const blood_type = result.data.personal_information.blood_type;
-          const location = result.data.personal_information.location;
-          const image_profile = result.data.personal_information.image_profile;
+  // const handleLogin = () => {
+  //   login({
+  //     email: email.toLocaleLowerCase(),
+  //     password: password,
+  //   })
+  //     .then(result => {
+  //       if (result.status == 200) {
+  //         const accessToken = result.data.accessToken;
+  //         const id_user = result.data.personal_information.id_user;
+  //         const full_name = result.data.personal_information.full_name;
+  //         const call_number = result.data.personal_information.call_number;
+  //         const blood_type = result.data.personal_information.blood_type;
+  //         const location = result.data.personal_information.location;
+  //         const image_profile = result.data.personal_information.image_profile;
 
-          const id_userToString = id_user.toString()
+  //         const id_userToString = id_user.toString()
 
-          AsyncStorage.setItem('accessToken', accessToken);
-          AsyncStorage.setItem('id_user', id_userToString);
-          AsyncStorage.setItem('full_name', full_name);
-          AsyncStorage.setItem('call_number', call_number);
-          AsyncStorage.setItem('blood_type', blood_type);
-          AsyncStorage.setItem('location', location);
-          AsyncStorage.setItem('image_profile', image_profile);
-          navigation.replace('Home');
-        } else {
-          alert(result.message);
-        }
-      })
-      .catch(err => {
-        alert('error', err);
-        console.log(err)
-      });
-  };
+  //         AsyncStorage.setItem('accessToken', accessToken);
+  //         AsyncStorage.setItem('id_user', id_userToString);
+  //         AsyncStorage.setItem('full_name', full_name);
+  //         AsyncStorage.setItem('call_number', call_number);
+  //         AsyncStorage.setItem('blood_type', blood_type);
+  //         AsyncStorage.setItem('location', location);
+  //         AsyncStorage.setItem('image_profile', image_profile);
+  //         navigation.replace('Home');
+  //       } else {
+  //         alert(result.message);
+  //       }
+  //     })
+  //     .catch(err => {
+  //       alert('error', err);
+  //       console.log(err)
+  //     });
+  // };
 
   return (
     <View style={styles.container}>

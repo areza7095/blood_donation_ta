@@ -16,7 +16,7 @@ function Profile({navigation}) {
   const [location, setLocation] = useState('');
   const [imageProfile, setImageProfile] = useState('');
 
-  const Url = "http://192.168.10.82:8000"  
+  const Url = "http://172.20.10.5:8000"  
   
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function Profile({navigation}) {
   const handlePersonalInfo = async () => {
     const dataToken = await AsyncStorage.getItem('accessToken');
     if (dataToken == null) {
-      navigation.replace('Onboarding1');
+      // navigation.replace('Onboarding1');
       console.log(dataToken);
     } else {
       const accessToken = await AsyncStorage.getItem('accessToken');
@@ -72,14 +72,14 @@ function Profile({navigation}) {
           style={styles.image2}
           imageStyle={styles.image2_imageStyle}>
           <Image
-            source={{uri: `${Url}${imageProfile}`}} 
+            source={require('../../assets/images/rezaProfile.jpg')}
             resizeMode="contain"
             style={styles.image3}></Image>
         </ImageBackground>
       </View>
       <View style={styles.fullNameStack}>
         <View style={styles.fullName}>
-          <Text style={styles.fahimEkam}>{fullName}</Text>
+          <Text style={styles.fahimEkam}>Ahmad Reza A</Text>
         </View>
         <View style={styles.address}>
           <View style={styles.image4Row}>
@@ -87,7 +87,7 @@ function Profile({navigation}) {
               source={require('../../assets/images/image_y95K..png')}
               resizeMode="contain"
               style={styles.image4}></Image>
-            <Text style={styles.klapanunggalBogor1}>{location}</Text>
+            <Text style={styles.klapanunggalBogor1}>Bekasi</Text>
           </View>
         </View>
       </View>
@@ -107,7 +107,7 @@ function Profile({navigation}) {
       </View>
       <View style={styles.bloodType}>
         <View style={styles.rect}>
-          <Text style={styles.b2}>{bloodType}</Text>
+          <Text style={styles.b2}>AB</Text>
           <Text style={styles.bloodType2}>Blood Type</Text>
         </View>
       </View>

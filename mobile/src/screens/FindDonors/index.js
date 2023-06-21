@@ -73,7 +73,7 @@ function FindDonors({ navigation }) {
           horizontal={false}
           contentContainerStyle={styles.scrollArea_contentContainerStyle}
         >
-          {userInfo.map((data, index) => {
+          {/* {userInfo.map((data, index) => {
             console.log(`${Url}${data.image_profile}`)
             return (
               <>
@@ -119,7 +119,253 @@ function FindDonors({ navigation }) {
                 </View>
               </>
             )
-          })}
+          })} */}
+
+          {/* <View style={styles.personDonors}>
+            <View style={styles.rect}>
+              <View style={styles.profileImageRow}>
+                <View style={styles.profileImage}>
+                  <Image
+                    source={{ uri: `` }}
+                    resizeMode="contain"
+                    style={styles.image4}
+                  ></Image>
+                </View>
+                <View style={styles.fullNameColumn}>
+                  <View style={styles.fullName}>
+                    <Text style={styles.ahmadRezaA}>Ahmad Reza A</Text>
+                  </View>
+                  <View style={styles.address}>
+                    <View style={styles.image5Row}>
+                      <Image
+                        source={require("../../assets/images/image_y95K..png")}
+                        resizeMode="contain"
+                        style={styles.image5}
+                      ></Image>
+                      <Text style={styles.klapanunggalBogor}>
+                        Klapanunggal
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View style={styles.bloodType}>
+                  <ImageBackground
+                    source={require("../../assets/images/image_cl5X..png")}
+                    resizeMode="contain"
+                    style={styles.image6}
+                    imageStyle={styles.image6_imageStyle}
+                  >
+                    <Text style={styles.b2}>AB</Text>
+                  </ImageBackground>
+                </View>
+              </View>
+            </View>
+          </View> */}
+
+          <View style={styles.personDonors}>
+            <View style={styles.rect}>
+              <View style={styles.profileImageRow}>
+                <View style={styles.profileImage}>
+                  <Image
+                    source={require('../../assets/images/athifaProfile.jpeg')}
+                    resizeMode="contain"
+                    style={styles.image4}
+                  ></Image>
+                </View>
+                <View style={styles.fullNameColumn}>
+                  <View style={styles.fullName}>
+                    <Text style={styles.ahmadRezaA}>Athifa Putri Agastya</Text>
+                  </View>
+                  <View style={styles.address}>
+                    <View style={styles.image5Row}>
+                      <Image
+                        source={require("../../assets/images/image_y95K..png")}
+                        resizeMode="contain"
+                        style={styles.image5}
+                      ></Image>
+                      <Text style={styles.klapanunggalBogor}>
+                        Bojong
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View style={styles.bloodType}>
+                  <ImageBackground
+                    source={require("../../assets/images/image_cl5X..png")}
+                    resizeMode="contain"
+                    style={styles.image6}
+                    imageStyle={styles.image6_imageStyle}
+                  >
+                    <Text style={styles.a2}>A</Text>
+                  </ImageBackground>
+                </View>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.personDonors}>
+            <View style={styles.rect}>
+              <View style={styles.profileImageRow}>
+                <View style={styles.profileImage}>
+                  <Image
+                    source={require('../../assets/images/sipaProfile.jpeg')}
+                    resizeMode="contain"
+                    style={styles.image4}
+                  ></Image>
+                </View>
+                <View style={styles.fullNameColumn}>
+                  <View style={styles.fullName}>
+                    <Text style={styles.ahmadRezaA}>Syifa Salsabila H</Text>
+                  </View>
+                  <View style={styles.address}>
+                    <View style={styles.image5Row}>
+                      <Image
+                        source={require("../../assets/images/image_y95K..png")}
+                        resizeMode="contain"
+                        style={styles.image5}
+                      ></Image>
+                      <Text style={styles.klapanunggalBogor}>
+                        Bojong
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View style={styles.bloodType}>
+                  <ImageBackground
+                    source={require("../../assets/images/image_cl5X..png")}
+                    resizeMode="contain"
+                    style={styles.image6}
+                    imageStyle={styles.image6_imageStyle}
+                  >
+                    <Text style={styles.a2}>B</Text>
+                  </ImageBackground>
+                </View>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.personDonors}>
+            <View style={styles.rect}>
+              <View style={styles.profileImageRow}>
+                <View style={styles.profileImage}>
+                  <Image
+                    source={require('../../assets/images/naufalProfile.jpeg')}
+                    resizeMode="contain"
+                    style={styles.image4}
+                  ></Image>
+                </View>
+                <View style={styles.fullNameColumn}>
+                  <View style={styles.fullName}>
+                    <Text style={styles.ahmadRezaA}>Naufal Ariq S</Text>
+                  </View>
+                  <View style={styles.address}>
+                    <View style={styles.image5Row}>
+                      <Image
+                        source={require("../../assets/images/image_y95K..png")}
+                        resizeMode="contain"
+                        style={styles.image5}
+                      ></Image>
+                      <Text style={styles.klapanunggalBogor}>
+                        Cileungsi
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View style={styles.bloodType}>
+                  <ImageBackground
+                    source={require("../../assets/images/image_cl5X..png")}
+                    resizeMode="contain"
+                    style={styles.image6}
+                    imageStyle={styles.image6_imageStyle}
+                  >
+                    <Text style={styles.a2}>O</Text>
+                  </ImageBackground>
+                </View>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.personDonors}>
+            <View style={styles.rect}>
+              <View style={styles.profileImageRow}>
+                <View style={styles.profileImage}>
+                  <Image
+                    source={require('../../assets/images/romiProfilee.jpeg')}
+                    resizeMode="contain"
+                    style={styles.image4}
+                  ></Image>
+                </View>
+                <View style={styles.fullNameColumn}>
+                  <View style={styles.fullName}>
+                    <Text style={styles.ahmadRezaA}>Muharomi K</Text>
+                  </View>
+                  <View style={styles.address}>
+                    <View style={styles.image5Row}>
+                      <Image
+                        source={require("../../assets/images/image_y95K..png")}
+                        resizeMode="contain"
+                        style={styles.image5}
+                      ></Image>
+                      <Text style={styles.klapanunggalBogor}>
+                        Jonggol
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View style={styles.bloodType}>
+                  <ImageBackground
+                    source={require("../../assets/images/image_cl5X..png")}
+                    resizeMode="contain"
+                    style={styles.image6}
+                    imageStyle={styles.image6_imageStyle}
+                  >
+                    <Text style={styles.a2}>B</Text>
+                  </ImageBackground>
+                </View>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.personDonors}>
+            <View style={styles.rect}>
+              <View style={styles.profileImageRow}>
+                <View style={styles.profileImage}>
+                  <Image
+                    source={require("../../assets/images/faylaProfile.jpeg")}
+                    resizeMode="contain"
+                    style={styles.image4}
+                  ></Image>
+                </View>
+                <View style={styles.fullNameColumn}>
+                  <View style={styles.fullName}>
+                    <Text style={styles.ahmadRezaA}>Fayla Makarennu</Text>
+                  </View>
+                  <View style={styles.address}>
+                    <View style={styles.image5Row}>
+                      <Image
+                        source={require("../../assets/images/image_y95K..png")}
+                        resizeMode="contain"
+                        style={styles.image5}
+                      ></Image>
+                      <Text style={styles.klapanunggalBogor}>
+                        Jonggol
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View style={styles.bloodType}>
+                  <ImageBackground
+                    source={require("../../assets/images/image_cl5X..png")}
+                    resizeMode="contain"
+                    style={styles.image6}
+                    imageStyle={styles.image6_imageStyle}
+                  >
+                    <Text style={styles.a2}>B</Text>
+                  </ImageBackground>
+                </View>
+              </View>
+            </View>
+          </View>
 
         </ScrollView>
       </View>
@@ -216,7 +462,8 @@ const styles = StyleSheet.create({
   },
   personDonors: {
     width: 335,
-    height: 111
+    height: 111,
+    marginBottom: 15
   },
   rect: {
     width: 335,
@@ -284,6 +531,24 @@ const styles = StyleSheet.create({
     width: 39
   },
   image6_imageStyle: {},
+  a2: {
+    fontFamily: "poppins-500",
+    color: "rgba(255,255,255,1)",
+    height: 21,
+    width: 17,
+    fontSize: 12,
+    marginTop: 17,
+    marginLeft: 15
+  },
+  b3: {
+    fontFamily: "poppins-500",
+    color: "rgba(255,255,255,1)",
+    height: 21,
+    width: 17,
+    fontSize: 12,
+    marginTop: 17,
+    marginLeft: 15
+  },
   b2: {
     fontFamily: "poppins-500",
     color: "rgba(255,255,255,1)",

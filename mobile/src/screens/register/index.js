@@ -100,46 +100,51 @@ export default function Register({navigation}) {
   };
 
   const handleRegister = () => {
-    const checkFullName = checkNameValidity(fullName);
-    const checkEmail = checkNameValidity(email);
-    const checkPassowrd = checkPasswordValidity(password);
-    const checkCallNumber = checkTelpValidity(CallNumber);
-    const checkBloodType = checkTelpValidity(bloodType);
-    const checkLocation = checkTelpValidity(location);
-    if (
-      !checkFullName ||
-      !checkEmail ||
-      !checkPassowrd ||
-      !checkCallNumber ||
-      !checkBloodType ||
-      !checkLocation
-    ) {
-      register({
-        full_name: fullName.toUpperCase(),
-        email: email,
-        password: password,
-        call_number: CallNumber.toString(),
-        blood_type: bloodType.toString(),
-        location: location.toString(),
-      })
-        .then(result => {
-          console.log('result:', result);
-          if (result.status == 200) {
-            alert(
-              'Akun anda Berhasil Dibuat, Silahkan Login',
-            );
-            navigation.replace('Login');
-          } else {
-            alert(result.message);
-          }
-        })
-        .catch(err => {
-          alert('error', err);
-        });
-    } else {
-      alert(checkPassowrd);
-    }
+    AsyncStorage.clear();
+    navigation.navigate('Home');
   };
+
+  // const handleRegister = () => {
+  //   const checkFullName = checkNameValidity(fullName);
+  //   const checkEmail = checkNameValidity(email);
+  //   const checkPassowrd = checkPasswordValidity(password);
+  //   const checkCallNumber = checkTelpValidity(CallNumber);
+  //   const checkBloodType = checkTelpValidity(bloodType);
+  //   const checkLocation = checkTelpValidity(location);
+  //   if (
+  //     !checkFullName ||
+  //     !checkEmail ||
+  //     !checkPassowrd ||
+  //     !checkCallNumber ||
+  //     !checkBloodType ||
+  //     !checkLocation
+  //   ) {
+  //     register({
+  //       full_name: fullName.toUpperCase(),
+  //       email: email,
+  //       password: password,
+  //       call_number: CallNumber.toString(),
+  //       blood_type: bloodType.toString(),
+  //       location: location.toString(),
+  //     })
+  //       .then(result => {
+  //         console.log('result:', result);
+  //         if (result.status == 200) {
+  //           alert(
+  //             'Akun anda Berhasil Dibuat, Silahkan Login',
+  //           );
+  //           navigation.replace('Login');
+  //         } else {
+  //           alert(result.message);
+  //         }
+  //       })
+  //       .catch(err => {
+  //         alert('error', err);
+  //       });
+  //   } else {
+  //     alert(checkPassowrd);
+  //   }
+  // };
 
   return (
     <View style={styles.container}>

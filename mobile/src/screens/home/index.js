@@ -123,7 +123,7 @@ export default function Home({navigation}) {
                       style={styles.image11}
                       imageStyle={styles.image11_imageStyle}
                     >
-                      <Text style={styles.b}>B+</Text>
+                      <Text style={styles.b}>AB</Text>
                     </ImageBackground>
                   </View>
                 </View>
@@ -141,7 +141,7 @@ export default function Home({navigation}) {
                   <View style={styles.nameBlood1Column}>
                     <View style={styles.nameBlood1}>
                       <Text style={styles.name2}>Name</Text>
-                      <Text style={styles.ahmadRezaA1}>Ahmad Reza A</Text>
+                      <Text style={styles.ahmadRezaA1}>Athifa Putri A</Text>
                     </View>
                     <View style={styles.locationBlood1}>
                       <Text style={styles.location2}>Location</Text>
@@ -155,7 +155,7 @@ export default function Home({navigation}) {
                       style={styles.image19}
                       imageStyle={styles.image19_imageStyle}
                     >
-                      <Text style={styles.b2}>B+</Text>
+                      <Text style={styles.b3}>B</Text>
                     </ImageBackground>
                   </View>
                 </View>
@@ -572,6 +572,15 @@ const styles = StyleSheet.create({
     width: 38
   },
   image19_imageStyle: {},
+  b3: {
+    fontFamily: "poppins-500",
+    color: "rgba(255,255,255,1)",
+    height: 22,
+    width: 26,
+    fontSize: 18,
+    marginTop: 22,
+    marginLeft: 12
+  },
   b2: {
     fontFamily: "poppins-500",
     color: "rgba(255,255,255,1)",

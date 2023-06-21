@@ -31,7 +31,7 @@ function CreateARequest({navigation}) {
   const handlePersonalInfo = async () => {
     const dataToken = await AsyncStorage.getItem('accessToken');
     if (dataToken == null) {
-      navigation.replace('Onboarding1');
+      // navigation.replace('Onboarding1');
       console.log(dataToken);
     } else {
       const id_user = await AsyncStorage.getItem('id_user');
@@ -44,27 +44,51 @@ function CreateARequest({navigation}) {
  
 
   const handleSendReq = () => {
-    newBloodReq({
-      id_user: parseInt(idUser),
-      city: city,
-      hospital: hospital,
-      blood_type: bloodType,
-      call_number: callNumber,
-      notes: note,
-    })
-      .then(result => {
-        console.log('result:', result);
-        if (result.status == 200) {
-          alert(
-            'Penambahan request darah berhasil dikirim',
-          );
-          navigation.replace('Home');
-        } else {
-          alert(result.message);
-        }
-      })
+      navigation.replace('Home');
+
+    // newBloodReq({
+    //   id_user: parseInt(idUser),
+    //   city: city,
+    //   hospital: hospital,
+    //   blood_type: bloodType,
+    //   call_number: callNumber,
+    //   notes: note,
+    // })
+    //   .then(result => {
+    //     console.log('result:', result);
+    //     if (result.status == 200) {
+    //       alert(
+    //         'Penambahan request darah berhasil dikirim',
+    //       );
+    //       navigation.replace('Home');
+    //     } else {
+    //       alert(result.message);
+    //     }
+    //   })
     
   }
+  // const handleSendReq = () => {
+  //   newBloodReq({
+  //     id_user: parseInt(idUser),
+  //     city: city,
+  //     hospital: hospital,
+  //     blood_type: bloodType,
+  //     call_number: callNumber,
+  //     notes: note,
+  //   })
+  //     .then(result => {
+  //       console.log('result:', result);
+  //       if (result.status == 200) {
+  //         alert(
+  //           'Penambahan request darah berhasil dikirim',
+  //         );
+  //         navigation.replace('Home');
+  //       } else {
+  //         alert(result.message);
+  //       }
+  //     })
+    
+  // }
 
 
   return (
